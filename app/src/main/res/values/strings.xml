@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Weather_App</string>
+    <string name="dev_name">DiegoCC</string>
+    <string name="create_by">creado por</string>
+    <string name="humedad">Humedad</string>
+    <string name="presion">Presion</string>
+    <string name="logo">Personal Weather</string>
+</resources>
