@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Constraint_activitymain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
     android:orientation="vertical"
-    android:visibility="visible"
 
+    android:visibility="visible"
     tools:context=".ui.view.MainActivity">
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/imageViewBackground"
         android:layout_width="wrap_content"
         android:layout_height="300dp"
         android:background="@drawable/sun1"
@@ -20,7 +20,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/image_background_description" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
@@ -49,6 +50,7 @@
         android:layout_height="100dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="8dp"
+        android:contentDescription="@string/icon_appi_description"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,24 +75,26 @@
             android:id="@+id/humidity_icon"
             android:layout_width="match_parent"
             android:layout_height="@dimen/icon"
+            android:contentDescription="@string/icon_humidity_decription"
             app:srcCompat="@drawable/humidity" />
 
         <TextView
             android:id="@+id/textView_Humidity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/textLinearLayout"
-            android:textStyle="bold"
             android:layout_marginTop="@dimen/space"
-            android:text="Humedad" />
+            android:text="@string/humidity_String_var"
+            android:textSize="@dimen/textLinearLayout"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textViewHumidity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/textLinearLayout"
             android:layout_marginTop="@dimen/space"
-            android:text="Humedad" />
+            android:text="@string/humidity_String_default"
+            android:textColor="#212121"
+            android:textSize="@dimen/textLinearLayout" />
     </LinearLayout>
 
     <LinearLayout
@@ -111,24 +115,26 @@
             android:id="@+id/pressure_icon"
             android:layout_width="match_parent"
             android:layout_height="@dimen/icon"
+            android:contentDescription="@string/icon_pressure_description"
             app:srcCompat="@drawable/pressure" />
 
         <TextView
             android:id="@+id/textView_Pressure"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/textLinearLayout"
-            android:textStyle="bold"
             android:layout_marginTop="@dimen/space"
-            android:text="Humedad" />
+            android:text="@string/pressure_String_var"
+            android:textSize="@dimen/textLinearLayout"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textViewPressure"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/textLinearLayout"
             android:layout_marginTop="@dimen/space"
-            android:text="Presion" />
+            android:text="@string/pressure_String_default"
+            android:textColor="#212121"
+            android:textSize="@dimen/textLinearLayout" />
 
     </LinearLayout>
 
@@ -150,24 +156,26 @@
             android:id="@+id/wind"
             android:layout_width="match_parent"
             android:layout_height="@dimen/icon"
+            android:contentDescription="@string/icon_wind_description"
             app:srcCompat="@drawable/wind" />
 
         <TextView
             android:id="@+id/textView_Wind"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/textLinearLayout"
-            android:textStyle="bold"
             android:layout_marginTop="@dimen/space"
-            android:text="Wind" />
+            android:text="@string/wind_String_var"
+            android:textSize="@dimen/textLinearLayout"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textViewWind"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/textLinearLayout"
             android:layout_marginTop="@dimen/space"
-            android:text="Wind" />
+            android:text="@string/wind_String_default"
+            android:textColor="#212121"
+            android:textSize="@dimen/textLinearLayout" />
     </LinearLayout>
 
     <LinearLayout
@@ -188,24 +196,26 @@
             android:id="@+id/info"
             android:layout_width="match_parent"
             android:layout_height="@dimen/icon"
+            android:contentDescription="@string/icon_info_description"
             app:srcCompat="@drawable/info" />
 
         <TextView
             android:id="@+id/textView_Info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/textLinearLayout"
-            android:textStyle="bold"
             android:layout_marginTop="@dimen/space"
-            android:text="Diego Cortes" />
+            android:text="@string/develop_String_var"
+            android:textSize="@dimen/textLinearLayout"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textViewInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/textLinearLayout"
             android:layout_marginTop="@dimen/space"
-            android:text="Creada por:" />
+            android:text="@string/develoString_default"
+            android:textColor="#212121"
+            android:textSize="@dimen/textLinearLayout" />
     </LinearLayout>
 
     <TextView
@@ -215,7 +225,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="80dp"
-        android:text="30°"
+        android:text="@string/temperatureString"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -226,21 +236,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Ubicacion"
+        android:text="@string/adrees_String"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+        app:layout_constraintTop_toTopOf="@+id/imageViewBackground" />
 
     <TextView
         android:id="@+id/textView_Feeling"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="Sensacion"
+        android:text="@string/feelsString"
         android:textColor="@color/white"
-        style="@style/TextAppearance.MaterialComponents.Headline6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_Temperature" />
 
@@ -251,20 +261,20 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="Actualizacion"
+        android:text="@string/update_String"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_Feeling" />
 
     <TextView
         android:id="@+id/textView_Maxiimum"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Max"
+        android:text="@string/tempMax_String"
         android:textColor="@color/white"
-        style="@style/TextAppearance.MaterialComponents.Headline6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView_Status" />
 
@@ -275,7 +285,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Min"
+        android:text="@string/tempMin_String"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_Maxiimum" />

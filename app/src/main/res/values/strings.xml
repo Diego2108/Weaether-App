@@ -5,4 +5,25 @@
     <string name="humedad">Humedad</string>
     <string name="presion">Presion</string>
     <string name="logo">Personal Weather</string>
+    <string name="base_url_weather">https://api.openweathermap.org/</string>
+    <string name="temperatureString">30°</string>
+    <string name="feelsString">Sensacion</string>
+    <string name="update_String">Actualizacion</string>
+    <string name="tempMax_String">Max</string>
+    <string name="tempMin_String">Min</string>
+    <string name="adrees_String">Ubicacion</string>
+    <string name="humidity_String_default">Humedad</string>
+    <string name="pressure_String_default">Presion</string>
+    <string name="develoString_default">Creada por:</string>
+    <string name="wind_String_default">Wind</string>
+    <string name="humidity_String_var">Humedad</string>
+    <string name="pressure_String_var">Pressure</string>
+    <string name="develop_String_var">Diego Cortes</string>
+    <string name="wind_String_var">Wind</string>
+    <string name="icon_humidity_decription">icon_humidity_decription</string>
+    <string name="icon_appi_description">icon_appi_description</string>
+    <string name="image_background_description">image_background_description</string>
+    <string name="icon_pressure_description">icon_pressure_description</string>
+    <string name="icon_info_description">icon_info_description</string>
+    <string name="icon_wind_description">icon_wind_description</string>
 </resources>

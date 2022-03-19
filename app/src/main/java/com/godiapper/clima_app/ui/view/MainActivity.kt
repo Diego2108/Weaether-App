@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import coil.load
+import com.godiapper.clima_app.R
 import com.godiapper.clima_app.databinding.ActivityMainBinding
 import com.godiapper.clima_app.model.WeatherEntity
 import com.godiapper.clima_app.model.WeatherService
@@ -38,12 +39,17 @@ class MainActivity : AppCompatActivity() {
             }
         }else {
             showError("Sin acceso a internet")
-           /* binding.cardviewAmanecer.isVisible = false
-            binding.cardviewAtardecer.isVisible = false*/
             binding.linearLayoutHumidity.isVisible = false
             binding.LineraLayoutPressure.isVisible = false
             binding.LinearLayoutWind.isVisible = false
             binding.LinearLayoutInfo.isVisible = false
+            binding.textViewAdress.isVisible = false
+            binding.textViewActualization.isVisible = false
+            binding.textViewMinimum.isVisible = false
+            binding.textViewMaxiimum.isVisible = false
+            binding.textViewFeeling.isVisible = false
+            binding.imageViewStatus.isVisible = false
+            binding.textViewTemperature.isVisible = false
         }
 
     }
@@ -60,12 +66,6 @@ class MainActivity : AppCompatActivity() {
             val dt = weaterEntity.dt
             val updateAt = " Actualizacion: ${SimpleDateFormat(
                 "hh:mm a", Locale.ENGLISH).format(Date(dt*1000))}"
-           /* val sunrise = weaterEntity.sys.sunrise
-            val sunriseFormat = SimpleDateFormat("hh:mm a",
-                Locale.ENGLISH).format(Date(sunrise*1000))
-            val sunset = weaterEntity.sys.sunset
-            val sunsetFormat = SimpleDateFormat("hh:mm a",
-                Locale.ENGLISH).format(Date(sunset*1000))*/
             val wind = "${weaterEntity.wind.sped} km/hr"
             val pressure = "${weaterEntity.main.pressure} mb"
             val humidity = "${weaterEntity.main.humidity} %"
@@ -81,18 +81,20 @@ class MainActivity : AppCompatActivity() {
                 textViewFeeling.text = status
                 textViewMaxiimum.text = tempMin
                 textViewMinimum.text = tempMax
-                /*textViewsunrise.text = sunriseFormat
-                textViewSunset.text = sunsetFormat*/
                 textViewWind.text = wind
                 textViewPressure.text = pressure
                 textViewHumidity.text = humidity
-                /*tvCielo.text = feelsLike
-                cardviewAmanecer.isVisible = true
-                cardviewAtardecer.isVisible = true*/
                 LinearLayoutWind.isVisible = true
                 LinearLayoutInfo.isVisible = true
                 LineraLayoutPressure.isVisible = true
                 linearLayoutHumidity.isVisible = true
+                binding.textViewAdress.isVisible = true
+                binding.textViewActualization.isVisible = true
+                binding.textViewMinimum.isVisible = true
+                binding.textViewMaxiimum.isVisible = true
+                binding.textViewFeeling.isVisible = true
+                binding.imageViewStatus.isVisible = true
+                binding.textViewTemperature.isVisible = true
 
             }
             shoIndicator(false)
@@ -101,39 +103,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    /*private fun formatResponse (weatherEntity: WeatherEntity){
-        try{
-            val temp = "${weatherEntity.main.temp.toInt()}°"
-            val cityName = weatherEntity.name
-            val country = weatherEntity.sys.country
-            val address = "$cityName,$country"
-            val dateNow = Calendar.getInstance().time
-            val tempMin ="Min ${weatherEntity.main.temp_min.toInt()}°"
-            val tempMax = "Max ${weatherEntity.main.temp_max.toInt()}°"
-            val feel = "Sensacion: ${weatherEntity.main.feels_like.toInt()}°"
-            val status = weatherEntity.weather[0].description.uppercase()
-
-            binding.apply {
-                ubicacion.text= address
-                tvFecha.text = dateNow.toString()
-                tvTemperatura.text = temp
-                tvCielo.text = feel
-                tvMinima.text = tempMin
-                tvMaxima.text = tempMax
-                tvStatus.text = status
-            }
-
-        }catch (exception:Exception){
-            // showError("Ha ocurrido un error")
-            Log.e("error format", "Ha ocurrido un error")
-        }
-    }*/
-
     private suspend fun getWeather(): WeatherEntity = withContext(Dispatchers.IO){
         shoIndicator(true)
 
         val retrofit: Retrofit = Retrofit.Builder()
-            .baseUrl("https://api.openweathermap.org/")
+            .baseUrl(getString(R.string.base_url_weather))
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -141,10 +115,6 @@ class MainActivity : AppCompatActivity() {
 
         service.getWeatherById(3527879, "metric","sp", "cde500865b040bff958bab839bc60394")
     }
-
-    /* private fun setupTitle(newTitle: String) {
-         supportActionBar?.let { title = newTitle }
-     }*/
 
     private fun showError(message: String){
         Toast.makeText(this,message, Toast.LENGTH_LONG).show()
