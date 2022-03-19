@@ -5,4 +5,16 @@
     <string name="humedad">Humedad</string>
     <string name="presion">Presion</string>
     <string name="logo">Personal Weather</string>
+    <string name="appi_id">efa318dbab126611b3925839a51ed422</string>
+
+    <string name="location_permission_required">Se necesita permiso de ubicacion</string>
+    <string name="ok">OK</string>
+    <string name="location_request_indispensable">El permiso de ubicacion es indispensable</string>
+    <string name="request">REQUEST</string>
+    <string name="permission_denied">Permiso denegado</string>
+    <string name="open_settings">Abrir ajustes</string>
+    <string name="temp_placeholder">24°</string>
+    <string name="time_placeholder">15:00</string>
+    <string name="no_location_detected">No se puede acceder a la ubicación. Asegurate que el servicio de ubicación está activado en tu dispositivo</string>
+
 </resources>
