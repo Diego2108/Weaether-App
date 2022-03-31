@@ -11,7 +11,6 @@ import com.godiapper.clima_app.R
 import com.godiapper.clima_app.databinding.ActivityMainBinding
 import com.godiapper.clima_app.model.WeatherEntity
 import com.godiapper.clima_app.model.WeatherService
-import com.godiapper.clima_app.ui.viewmodel.MainViewModel
 import com.godiapper.clima_app.utils.checkForInternet
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -24,22 +23,17 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        initObservers()
+
     }
 
-    private fun initObservers(){
-        viewModel.WeatherResponse.observe(this){ weather->
-            formatResponse(weather)
-        }
-    }
 
-  /*  private fun setupViewData() {
+
+   private fun setupViewData() {
         if (checkForInternet(this)){
             lifecycleScope.launch {
             }
@@ -58,7 +52,7 @@ class MainActivity : AppCompatActivity() {
             binding.textViewTemperature.isVisible = false
         }
 
-    }*/
+    }
 
     private fun formatResponse(weaterEntity:WeatherEntity){
         try {
@@ -110,6 +104,18 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private suspend fun getWeather(): WeatherEntity = withContext(Dispatchers.IO){
+        shoIndicator(true)
+
+        val retrofit: Retrofit = Retrofit.Builder()
+            .baseUrl("https://api.openweathermap.org/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val service: WeatherService = retrofit.create(WeatherService::class.java)
+
+        service.getWeatherById(3527879, "metric","sp", "cde500865b040bff958bab839bc60394")
+    }
 
     private fun showError(message: String){
         Toast.makeText(this,message, Toast.LENGTH_LONG).show()

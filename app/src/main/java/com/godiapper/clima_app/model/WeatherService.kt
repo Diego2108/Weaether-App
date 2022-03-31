@@ -10,5 +10,5 @@ interface WeatherService {
         @Query("id") lon: Long,
         @Query("units") units: String?,
         @Query("lang") lang: String?,
-        @Query("appid") appid: String?): Response<WeatherEntity>
+        @Query("appid") appid: String?): WeatherEntity
 }
