@@ -1,5 +1,6 @@
 package com.godiapper.clima_app.model
 
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -9,5 +10,5 @@ interface WeatherService {
         @Query("id") lon: Long,
         @Query("units") units: String?,
         @Query("lang") lang: String?,
-        @Query("appid") appid: String?): WeatherEntity
+        @Query("appid") appid: String?): Response<WeatherEntity>
 }
