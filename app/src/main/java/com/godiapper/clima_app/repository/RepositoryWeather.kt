@@ -10,10 +10,10 @@ import retrofit2.Retrofit
 import retrofit2.create
 
 class RepositoryWeather {
-    val appID: String = "cde500865b040bff958bab839bc60394"
+
     val retrofit = WeatherInstance.getWeather().create(WeatherService::class.java)
 
-    suspend fun getWeatherById(id:String): Response<WeatherEntity> = withContext(Dispatchers.IO){
-        retrofit.getWeatherById(3527879,"metric","sp","$appID")
+    suspend fun getWeatherById(): Response<WeatherEntity> = withContext(Dispatchers.IO){
+        retrofit.getWeatherById(3527879,"metric","sp","cde500865b040bff958bab839bc60394")
     }
 }
