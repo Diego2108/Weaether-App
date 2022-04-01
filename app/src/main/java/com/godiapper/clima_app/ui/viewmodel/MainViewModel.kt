@@ -14,16 +14,23 @@ class MainViewModel: ViewModel() {
     val error = MutableLiveData<String>()
     val repositoryWeather = RepositoryWeather()
 
-    suspend fun getResponse(weather:String){
-        val call = repositoryWeather.getWeatherById(weather)
+    suspend fun getResponse(){
+        val call = repositoryWeather.getWeatherById()
         viewModelScope.launch {
-           try{
-               WeatherResponse.postValue(call.body())
-               isloading.value = true
+            try{
+               getWeatherById()
            }catch (e: Exception){
                error.value = e.message
            }
             isloading.value = false
+        }
+    }
+    private suspend fun getWeatherById(){
+        val get = repositoryWeather.getWeatherById()
+        if (get.isSuccessful){
+            WeatherResponse.value = get.body()
+        }else{
+            error.value = get.message()
         }
     }
 }

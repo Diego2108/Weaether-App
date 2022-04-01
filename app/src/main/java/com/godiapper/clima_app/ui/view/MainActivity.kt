@@ -8,18 +8,11 @@ import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import coil.load
-import com.godiapper.clima_app.R
 import com.godiapper.clima_app.databinding.ActivityMainBinding
 import com.godiapper.clima_app.model.WeatherEntity
-import com.godiapper.clima_app.model.WeatherService
 import com.godiapper.clima_app.ui.viewmodel.MainViewModel
 import com.godiapper.clima_app.utils.checkForInternet
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -27,17 +20,20 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-     private val viewModel: MainViewModel by viewModels()
+    private val viewModel: MainViewModel by viewModels()
+
+    val view = MainViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initObservers()
+        setupViewData()
     }
 
     private fun initObservers(){
-        viewModel.WeatherResponse.observe(this){ weather->
+        viewModel.WeatherResponse.observe(this){ weather ->
             formatResponse(weather)
         }
 
@@ -46,6 +42,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupViewData() {
         if (checkForInternet(this)){
             lifecycleScope.launch {
+                viewModel.getResponse()
             }
         }else {
             showError("Sin acceso a internet")
